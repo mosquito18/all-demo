@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="./jquery-3.3.1.js"></script>
+    <style>
+        #container {
+            position: relative;
+        }
+
+        .leftView {
+            position: relative;
+            width: 318px;
+            height: 318px;
+        }
+
+        .smallImg {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .mask {
+            display: none;
+            position: absolute;
+            background: pink;
+            /* width: 100px;
+            height: 100px;
+            top:0;
+            left: 0; */
+             opacity: 0.5; 
+            /* background: url(./images/5.jpg); */
+            cursor: move;
+        }
+        .bigImg{
+            position: absolute;
+            width: 400px;
+            height: 400px;
+        }
+        .rightView {
+            display: none;
+            position: absolute;
+            left: 338px;
+            top: 0;
+            width: 318px;
+            height: 318px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="container">
+        <div class="leftView">
+            <div class="mask"></div>
+            <img class="smallImg" src="./5.jpg" alt="缩小版">
+        </div>
+        <div class="rightView">
+            <img class="bigImg" src="./5.jpg" alt="放大版">
+        </div>
+    </div>
+    <script>
+        function calculateMaskWH() {
+            var width = $('.leftView').width() / $('.bigImg').width() * $('.rightView').width();
+            var height = $('.leftView').height() / $('.bigImg').height() * $('.rightView').height();
+            $('.mask').css({
+                width: width,
+                height: height
+            });
+            // console.log($('.mask').width(),$('.mask').height());
+        }
+        calculateMaskWH();
+        //监听鼠标mouseover事件  
+        $('.leftView').on('mouseover', function () {
+            $('.mask').css('display', 'block');
+            $('.rightView').css('display', 'block');
+            $('.leftView').on('mousemove', function (event) {        //计算放大镜的left值和top值  
+                var left = event.pageX - $(this).offset().left - $('.mask').width() / 2; var top = event.pageY - $(this).offset().top - $('.mask').height() / 2;        //判断放大镜左右是否出界  
+                if (left < 0) {
+                    left = 0
+                } else if (left > $(this).width() - $('.mask').width()) {
+                    left = $(this).width() - $('.mask').width();
+                }        //判断放大镜上下是否出现  
+                if (top < 0) {
+                    top = 0;
+                } else if (top > $(this).height() - $('.mask').height()) {
+                    top = $(this).height() - $('.mask').height();
+                }
+                
+                $('.mask').css({
+                    left: left + 'px', top: top + 'px'
+                });        //计算比例  
+                var rate = $('.bigImg').width() / $('.leftView').width();
+                $('.bigImg').css({
+                    left: -rate * left + 'px',
+                    top: -rate * top + 'px'
+                });
+            });
+        });
+        //监听鼠标mouseout事件    
+        $('.leftView').on('mouseout', function () {
+            $('.mask').css('display', 'none');
+            $('.rightView').css('display', 'none');
+        });
+
+    </script>
+</body>
+
+</html>
