@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script>
+        function unique(arr) {
+            var res = [arr[0]];
+            for (var i = 1; i < arr.length; i++) {
+                var repeat = false;
+                for (var j = 0; j < res.length; j++) {
+                    if (arr[i] === res[j]) {
+                        repeat = true;
+                        break;
+                    }
+                }
+                if (!repeat) {
+                    res.push(arr[i]);
+                }
+            }
+            return res;
+        }
+        console.log('方法一：', unique([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
+        function unique2(arr) {
+            var arr2 = arr.sort();
+            var res = [arr2[0]];
+            for (var i = 1; i < arr2.length; i++) {
+                if (arr2[i] !== res[res.length - 1]) {
+                    res.push(arr2[i]);
+                }
+            }
+            return res;
+        }
+        console.log('方法二：', unique2([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
+        function unique3(arr) {
+            var res = [];
+            var obj = {};
+            for (var i = 0; i < arr.length; i++) {
+                if (!obj[arr[i]]) {
+                    obj[arr[i]] = 1;
+                    res.push(arr[i]);
+                }
+            }
+            return res;
+        }
+        console.log('方法三：', unique3([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
+        function unique4(arr) {
+            var res = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (res.indexOf(arr[i]) == -1) {
+                    res.push(arr[i]);
+                }
+            }
+            return res;
+        }
+        console.log('方法四：', unique4([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
+        function unique5(arr) {
+            var res = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (!res.includes(arr[i])) {
+                    res.push(arr[i]);
+                }
+            }
+            return res;
+        }
+        console.log('方法五：', unique5([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
+        function unique6(arr) {
+            var res = [];
+            res = arr.filter(function (item) {
+                return res.includes(item) ? '' : res.push(item);
+            });
+            return res;
+        }
+        console.log('方法六：', unique6([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
+        function unique7(arr) {
+            var res = [];
+            arr.forEach(function (item) {
+                res.includes(item) ? '' : res.push(item);
+            })
+            return res;
+        }
+        console.log('方法七：', unique7([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
+        function unique8(arr) {
+            var i, j, len = arr.length;
+            for (var i = 0; i < len; i++) {
+                for (var j = i + 1; j < len; j++) {
+                    if (arr[i] === arr[j]) {
+                        arr.splice(j, 1);
+                        len--;
+                        j--;
+                    }
+                }
+            }
+            return arr;
+        }
+        console.log('方法八：', unique8([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
+        function unique9(arr) {
+            var res = [];
+            for (var i = 0; i < arr.length; i++) {
+                res.lastIndexOf(arr[i]) !== -1 ? '' : res.push(arr[i]);
+            }
+            return res;
+        }
+        console.log('方法九：', unique9([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
+        function unique10(arr) {
+            //Set数据结构，它类似于数组，其成员的值都是唯一的
+            return Array.from(new Set(arr)); // 利用Array.from将Set结构转换成数组
+        }
+        console.log('方法十：', unique10([1, 1, 2, 3, 5, 3, 1, 5, 6, 7, 4]));
+
+
+
+
+
+    </script>
+</body>
+
+</html>

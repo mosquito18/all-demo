@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+        #textarea {
+            width: 300px;
+            height: 92px;
+            padding: 20px;
+            line-height: 50px;
+            resize: none;
+            outline: none;
+            border: 1px solid #ccc;
+            background: #eee;
+            font-size: 32px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <textarea id="textarea"></textarea>
+
+    <script>
+        var $textarea = document.getElementById('textarea');
+        var lastLength = 0;
+        var lastHeight = 0;
+
+        $textarea.addEventListener('input', function (e) {
+            var currentLength = $textarea.value.length;
+            // 判断字数如果比之前少了，说明内容正在减少，需要清除高度样式，重新获取
+            if(currentLength<lastLength){
+                $textarea.style.height = '';
+            }
+            var currentHeight = $textarea.scrollHeight;
+            // 如果内容高度发生了变化，再去设置高度值
+            if(lastHeight!==currentHeight||$textarea.style.height){
+                $textarea.style.height = $textarea.scrollHeight + 2 + 'px';
+            }
+            lastLength = currentLength;
+            lastHeight = currentHeight;
+        });
+    </script>
+</body>
+
+</html>

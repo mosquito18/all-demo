@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="./jquery-3.3.1.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .roll {
+            margin: 100px auto;
+            width: 200px;
+            height: 40px;
+            overflow: hidden;
+            border: 1px solid aquamarine;
+        }
+
+        .roll ul {
+            list-style: none;
+            /* animation: ani 5s linear infinite; */
+        }
+
+        .roll li {
+            line-height: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* @keyframes ani {
+            0% {
+                margin-top: 0;
+            }
+            12.5% {
+                margin-top: 0;
+            }
+            25% {
+                margin-top: -40px;
+            }
+            37.5% {
+                margin-top: -40px;
+            }
+            50% {
+                margin-top: -80px;
+            }
+            62.5% {
+                margin-top: -80px;
+            }
+            75% {
+                margin-top: -120px;
+            }
+            87.5% {
+                margin-top: -120px;
+            }
+            100% {
+                margin-top: -160px;
+
+        }
+
+        }*/
+    </style>
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="roll" id="roll">
+        <ul>
+            <li>第一个结构</li>
+            <li>第二个结构</li>
+            <li>第三个结构</li>
+            <li>第四个结构</li>
+            <li>第五个结构</li>
+            <li>第六个结构</li>
+            <li>第七个结构</li>
+            <li>第八个结构</li>
+        </ul>
+    </div>
+    <!-- <script>
+        $(document).ready(function(){
+            setInterval(function(){
+                $("#roll").find("ul:first").animate({
+                    marginTop:"-40px"
+                },500,function(){
+                    //$(this)指的是ul对象，ul复位之后把第一个元素和第二个元素插入到ul的最后一个元素的位置
+                    $(this).css({marginTop:"0px"}).find("li:first").appendTo(this);
+                    $(this).find("li:first").appendTo(this);
+                })
+            },1500)
+        })
+    </script> -->
+    <script>
+        function addKeyFrame() {
+            var ulObj = $("#roll ul"),  //获取ul对象
+                length = $("#roll li").length,  //获取li数组长度
+                per = 100 / (length / 2 * 2);  //计算中间间隔百分比
+            // 拼接字符串
+            var keyframes = `\    
+           @keyframes ani{`;
+            for (var i = 0; i <= length; i++) {
+                keyframes += `${i * per}%{
+                               margin-top: ${i % 2 == 0 ? -i * 20 : -(i - 1) * 20}px;
+                           }`;
+            }
+            keyframes += '}';
+            var liFirst = $("#roll li:first"),   //获取第一个元素
+                liSec = liFirst.next();    //获取第二个元素
+            ulObj.append(liFirst.clone()).append(liSec.clone());   //将两个元素插入到ul里面
+            $("<style>").attr("type", "text/css").html(keyframes).appendTo($("head"));    //创建style标签把关键帧插入到头部
+            ulObj.css("animation", "ani 5s linear infinite");  //给ul添加css3动画
+        }
+        addKeyFrame();
+    </script>
+</body>
+
+</html>

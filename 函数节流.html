@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function scrollFn() {
+            console.log(1);
+        }
+        // 方法一
+        function throttle(method, context) {
+            clearTimeout(method.tId);
+            method.tId = setTimeout(function () {
+                method.call(context)
+            }, 300)
+        }
+        // 方法二
+        function throttle1(method, delay) {
+            var timer = null;
+            return function () {
+                var context = this, args = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    method.apply(context, args);
+                }, delay);
+            }
+        }
+        //方法三
+        function throttle(method, delay, duration) {
+            console.log(2);
+            var timer = null;
+            var begin = new Date();
+            return function () {
+                var context = this, args = arguments;
+                var current = new Date();
+                clearTimeout(timer);
+                if (current - begin >= duration) {
+                    method.apply(context, args);
+                    begin = current;
+                } else {
+                    timer = setTimeout(function () {
+                        method.apply(context, args);
+                    }, delay);
+                }
+            }
+        }
+        window.onscroll = throttle1(scrollFn, 100,500);
+    </script>
+</head>
+
+<body style="height: 2000px;">
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script src="" async defer></script>
+</body>
+
+</html>

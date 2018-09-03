@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script>
+        // var MaintainableJS = {};
+        // MaintainableJS.Book = function (title) {
+        //     // debugger;
+        //     this.title = title;
+        //     this.page = 1;
+        //     console.log("Book", this, this.page);
+        // };
+        // MaintainableJS.Book.prototype.turnPage = function (direction) {
+
+        //     this.page += direction;
+        //     console.log("turnPage", this, this.page);
+        // };
+        // MaintainableJS.Chapter1 = new MaintainableJS.Book("Introduction to Style Guidelines");
+        // MaintainableJS.Chapter1.turnPage(20);
+        // MaintainableJS.Chapter2 = new MaintainableJS.Book("Basic Formatting");
+        // MaintainableJS.Chapter2.turnPage(30);
+        // MaintainableJS.Chapter3 = new MaintainableJS.Book("Comments");
+        // MaintainableJS.Chapter3.turnPage(40);
+
+
+
+        // 创建命名空间
+        var YourGlobal={
+            namespace:function(ns){
+                var parts = ns.split("."),
+                    object = this,
+                    i,len;
+
+                for(i=0,len=parts.length;i<len;i++){
+                    if(!object[parts[i]]){
+                        object[parts[i]]={};
+                    }
+                    object=object[parts[i]];
+                }
+                return object;
+            }
+        };
+        YourGlobal.namespace("Books.MaintainableJavaScript");
+
+        YourGlobal.Books.MaintainableJavaScript.author = "Nicholas C.Zakas";
+
+        YourGlobal.namespace("Books.HighPerformanceJavaScript");
+
+        console.log(YourGlobal.Books.MaintainableJavaScript.author);
+
+        YourGlobal.namespace("Books").ANewBook={};
+    </script>
+</body>
+
+</html>

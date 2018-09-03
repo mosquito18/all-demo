@@ -1,0 +1,40 @@
+body{
+    text-align: center;
+}
+ul{
+    background: gray;
+    width: 100%;
+    padding: 20px;
+    -webkit-perspective: 200;
+}
+li{
+    list-style: none;
+    height: 50px;
+    width: 100px;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    background: white;
+    border-radius: 2px;
+}
+.anim{
+    animation: anim 1s infinite;
+    margin-left: -100px;
+}
+.anim2{
+    animation: anim2 1s infinite;
+    margin-left: -100px;
+}
+@keyframes anim{
+    to{
+        transform: rotateY(-360deg);
+    }
+}
+@keyframes anim2{
+    25%{
+        transform:rotateY(0deg);
+    }
+    to{
+        transform: rotateY(-360deg);
+    }
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            outline: 0
+        }
+        .nav-bar-wrap {
+            width: 100%;
+            height: 64px;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+        }
+
+        .nav-bar {
+            min-width: 960px;
+            width: 80%;
+            margin: 0 auto;
+            height: 100%;
+            position: relative;
+        }
+
+        .nav-list {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .nav-bar ul {
+            height: 100%;
+        }
+
+        .nav-bar li {
+            display: inline-block;
+            position: relative;
+            margin: 0 22px;
+            height: 100%;
+            line-height: 64px;
+            font-size: 24px;
+            white-space: nowrap;
+            list-style-type: none
+        }
+
+        .nav-bar li a {
+            padding: 0 16px;
+            display: inline-block;
+            font-size: 20px;
+            color: #333333;
+        }
+
+        .nav-bar li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: #99cc33;
+            transition: .5s all linear;
+        }
+
+        .nav-bar li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-bar li a::after {
+            left: 100%;
+            /*选中项上一个下划线收回的方向，从左往右收线*/
+        }
+
+        .nav-bar li a:hover::after {
+            left: 0;
+            /*选中项下划线出线的方向，从左往右出线*/
+        }
+
+        .nav-bar li a:hover~.nav-bar li a::after {
+            left: 0;
+            /*选中项下一个下划线出线的方向，从左往右收线*/
+        }
+
+        .nav-bar .active {
+            border-bottom: 2px solid #99cc33;
+        }
+
+        .nav-bar li a:hover,
+        .nav-bar .active a {
+            color: #99cc33;
+        }
+
+        .sign-in {
+            padding: 0 16px;
+            color: #bdbdbd;
+            font-size: 15px;
+            margin-left: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="nav-bar-wrap">
+        <div class="nav-bar">
+            <img src="./img/登录注册.png" style="height: 48px;width: 48px;display: inline-block;" alt="">
+            <div class="nav-list">
+                <ul>
+                    <li class="active">
+                        <a href="">
+                            <span>课程</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>文档下载</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>语言评测</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>我的</span>
+                        </a>
+                    </li>
+                    <a href="">
+                        <span class="sign-in">登录/注册</span>
+                    </a>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

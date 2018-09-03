@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <!-- <style>
+        .wave {
+            position: absolute;
+            top: calc((100% - 30px)/2);
+            left: calc((100% - 30px)/2);
+            width: 30px;
+            height: 30px;
+            border-radius: 300px;
+            background: url(./images/1.jpg);
+            background-attachment: fixed;
+            background-position: center center;
+        }
+
+        .wave0 {
+            z-index: 2;
+            background-size: auto 106%;
+            -webkit-animation: w 1s forwards;
+        }
+
+        .wave1 {
+            z-index: 3;
+            background-size: auto 102%;
+            -webkit-animation: w 1s .2s forwards;
+        }
+
+        .wave2 {
+            z-index: 4;
+            background-size: auto 104%;
+            -webkit-animation: w 1s .4s forwards;
+        }
+
+        .wave3 {
+            z-index: 5;
+            background-size: auto 101%;
+            -webkit-animation: w 1s .5s forwards;
+        }
+
+        .wave4 {
+            z-index: 6;
+            background-size: auto 102%;
+            -webkit-animation: w 1s .8s forwards;
+        }
+
+        .wave5 {
+            z-index: 7;
+            background-size: auto 100%;
+            -webkit-animation: w 1s 1s forwards;
+        }
+
+        @-webkit-keyframes w {
+            0% {
+                top: calc((100% - 30px)/2);
+                left: calc((100% - 30px)/2);
+                width: 30px;
+                height: 30px;
+            }
+            100% {
+                top: calc((100% - 300px)/2);
+                left: calc((100% - 300px)/2);
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style> -->
+    <style>
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        .g-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url(https://images.unsplash.com/photo-1440688807730-73e4e2169fb8?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=);
+            background-attachment: fixed;
+            background-position: center center;
+            /* background-size: auto; */
+            background-size: auto 100%;
+            overflow: hidden;
+            cursor: pointer;
+
+        }
+
+        .g-position {
+            position: absolute;
+            /* 相对于视口的宽度或高度中较小的那个。其中最小的那个被均分为100单位的vmin */
+            width: 80vmin;
+            height: 80vmin;
+        }
+
+        .g-center {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wave {
+            position: absolute;
+            top: calc((100% - 20vmin)/2);
+            left: calc((100% - 20vmin)/2);
+            width: 20vmin;
+            height: 20vmin;
+            border-radius: 50%;
+            background-image: url(https://images.unsplash.com/photo-1440688807730-73e4e2169fb8?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=);
+            background-attachment: fixed;
+            background-position: center center;
+            transform: translate3d(0, 0, 0);
+            opacity: 0;
+            transition: all .2s;
+        }
+
+        .g-wave1 {
+            background-size: auto 106%;
+            animation: wave 1s ease-out .1s;
+            animation-fill-mode: forwards;
+            z-index: 10;
+        }
+
+        .g-wave2 {
+            background-size: auto 102%;
+            animation: wave 1s ease-out .15s;
+            animation-fill-mode: forwards;
+            z-index: 20;
+        }
+
+        .g-wave3 {
+            background-size: auto 104%;
+            animation: wave 1s ease-out .25s;
+            animation-fill-mode: forwards;
+            z-index: 30;
+        }
+
+        .g-wave4 {
+            background-size: auto 100%;
+            animation: wave 1s ease-out .4s;
+            animation-fill-mode: forwards;
+            z-index: 40;
+        }
+
+        @keyframes wave {
+            0% {
+                top: calc((100% - 20vmin)/2);
+                left: calc((100% - 20vmin)/2);
+                width: 20vmin;
+                height: 20vmin;
+                opacity: 1;
+            }
+            10% {
+                /* opacity: 1; */
+            }
+            99% {
+                opacity: 1;
+            }
+            100% {
+                top: calc((100% - 80vmin)/2);
+                left: calc((100% - 80vmin)/2);
+                width: 80vmin;
+                height: 80vmin;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- <div class="wave wave5"></div>
+    <div class="wave wave4"></div>
+    <div class="wave wave3"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave1"></div>
+    <div class="wave wave0"></div> -->
+    <div class="g-container">
+
+    </div>
+    <script src="./jquery-3.3.1.js"></script>
+    <script>
+        (function () {
+            let x, y;
+            let index = 0;
+            let screenSizeWidth = $('body').width();
+            let screenSizeHeight = $('body').height();
+            let halfvmin = (screenSizeWidth > screenSizeHeight ? screenSizeHeight / 2 : screenSizeWidth / 2) * 0.8;
+
+            console.log('halfvmin', halfvmin);
+
+            $(document).on("click", function (e) {
+                x = e.pageX;
+                y = e.pageY;
+                waveMove(x, y, index++);
+            });
+
+            function waveMove(x, y, z) {
+                $(".g-container").append(`
+                    <div class="g-position g-position${z}" style="top:${y - halfvmin}px; left:${x - halfvmin}px; z-index:${z}">
+                        <div class="g-center">
+                            <div class="wave g-wave1"></div>
+                            <div class="wave g-wave2"></div>
+                            <div class="wave g-wave3"></div>
+                            <div class="wave g-wave4"></div>
+                        </div>
+                    </div>
+                `);
+
+                setTimeout(function () {
+                    $(`.g-position${z}`).remove();
+                }, 3000);
+            }
+        })();
+
+    </script>
+</body>
+
+</html>
