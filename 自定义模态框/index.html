@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .click-btn {
+            display: inline-block;
+            padding: 8px 50px;
+            border-radius: 20px;
+            color: #fff;
+            background: #99cc33;
+            cursor: pointer;
+        }
+
+        .modal-part {
+            display: none;
+        }
+
+        .modal-wrap {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #000;
+            opacity: 0.5;
+            overflow: hidden;
+            z-index: 1000;
+            color: #fff;
+        }
+
+        .modal-content {
+            width: 360px;
+            /* height: 300px; */
+            margin: 0 auto;
+            position: fixed;
+            top: 200px;
+            left: 50%;
+            margin-left: -180px;
+            /* margin-top: -150px; */
+            z-index: 2000;
+
+        }
+
+        .score {
+            width: 300px;
+            height: 270px;
+            margin: 0 auto;
+            background: url(./得分.png) no-repeat;
+            background-size: auto 100%;
+            text-align: center;
+        }
+
+        .score p {
+            color: #99cc33;
+            font-weight: bold;
+            padding-left: 10px;
+        }
+
+        .score p:nth-child(1) {
+            padding-top: 90px;
+            font-size: 24px;
+        }
+
+        .score p:nth-child(2) {
+            margin: 10px 0;
+            font-size: 36px;
+        }
+        .btn-part{
+            position: relative;
+            margin-top:30px;
+        }
+        .study-btn{
+            position: absolute;
+            left:0;
+        }
+        .check-btn{
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="click-btn">点我弹框</div>
+    <div class="modal-part">
+        <div class="modal-wrap"></div>
+        <div class="modal-content">
+            <div class="score">
+                <p>本次测试得分为</p>
+                <p>59</p>
+            </div>
+            <div class="btn-part">
+                <div class="click-btn study-btn">前往学习</div>
+                <div class="click-btn check-btn">查看错题</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="../jquery-3.3.1.js"></script>
+    <script>
+        $(".click-btn").click(function () {
+            $(".modal-part").css('display', 'block');
+        })
+        $(".modal-wrap").click(function () {
+            $(".modal-part").css('display', 'none');
+        })
+        $(".study-btn").click(function () {
+            $(".modal-part").css('display', 'none');
+        })
+        $(".check-btn").click(function () {
+            $(".modal-part").css('display', 'none');
+        })
+    </script>
+</body>
+
+</html>

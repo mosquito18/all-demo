@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <h2>剩余时间:</h2>
+    <div id="countDown1"></div>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <script src="./jquery-3.3.1.js"></script>
+    <script language="javascript" type="text/javascript">
+        // console.log(new Date().getTime() + 7200000);
+        var timer = null;
+        var t=0;
+        // Math.round(new Date().getTime()/1000);
+        function getCountDown(timestamp) {
+            
+            timer = setInterval(function () {
+                var nowTime = new Date();
+                var endTime = new Date(timestamp);
+
+                t = endTime.getTime() - nowTime.getTime();
+                //            var d=Math.floor(t/1000/60/60/24);
+                var hour = Math.floor(t / 1000 / 60 / 60 % 24);
+                var min = Math.floor(t / 1000 / 60 % 60);
+                var sec = Math.floor(t / 1000 % 60);
+
+                if (hour < 10) {
+                    hour = "0" + hour;
+                }
+                if (min < 10) {
+                    min = "0" + min;
+                }
+                if (sec < 10) {
+                    sec = "0" + sec;
+                }
+                var countDownTime = hour + ":" + min + ":" + sec;
+                $("#countDown1").html(countDownTime);
+
+            }, 1000);
+        }
+
+        //调用函数：
+        getCountDown(new Date().getTime() + 1000 * 60 * 60 * 2);
+        document.addEventListener('visibilitychange', function() {
+            if(document.visibilityState=='hidden'){
+                console.log('hidden');
+                clearInterval(timer);
+            }else{
+                console.log('show');
+                getCountDown(new Date().getTime() + t);
+            }
+        }, false);
+    </script>
+</body>
+
+</html>

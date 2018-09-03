@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <a href="http://img.sccnn.com/bimg/338/24556.jpg" download="5.jpg">点击下载图片</a>
+    <a href="./XXX.txt" download="XXX.txt">点击下载文档</a>
+    <a href="./XXX.rar" download="XXX.rar">点击下载压缩包</a>
+    <a href="./XXX.docx" download="XXX.docx">点击下载文档</a>
+    <button id="btn1">按钮一</button>
+    <button id="btn2">按钮二</button>
+    <script src="../jquery-3.3.1.js"></script>
+    <script>
+        var $eleBtn1 = $("#btn1");
+        var $eleBtn2 = $("#btn2");
+        //方法一：window.open()
+        $eleBtn1.click(function () {
+            window.open("./XXX.rar");
+        });
+        //方法二：通过form
+        $eleBtn2.click(function () {
+            var $eleForm = $("<form method='get'></form>");
+
+            $eleForm.attr("action", "./XXX.rar");
+
+            $(document.body).append($eleForm);
+
+            //提交表单，实现下载
+            $eleForm.submit();
+        });
+
+    </script>
+</body>
+
+</html>
