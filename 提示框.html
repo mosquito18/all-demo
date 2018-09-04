@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 300px;
+            max-width: 600px;
+            transform: translate(-50%, -50%);
+            z-index: 99999;
+            text-align: center;
+            padding: 15px;
+            border-radius: 3px;
+        }
+
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        .alert-info {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+
+        .alert-warning {
+            color: #8a6d3b;
+            background-color: #fcf8e3;
+            border-color: #faebcc;
+        }
+
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="alert"></div>
+    <script src="./jquery-3.3.1.js"></script>
+    <script>
+        //提示框
+        var prompt = function (message, style, time) {
+            style = (style === undefined) ? 'alert-success' : style;
+            time = (time === undefined) ? 1200 : time;
+            $('<div>')
+                .appendTo('body')
+                .addClass('alert ' + style)
+                .html(message)
+                .show()
+                .delay(time)
+                .fadeOut();
+        };
+
+        // 成功提示
+        var success_prompt = function (message, time) {
+            prompt(message, 'alert-success', time);
+        };
+
+        // 失败提示
+        var fail_prompt = function (message, time) {
+            prompt(message, 'alert-danger', time);
+        };
+
+        // 提醒
+        var warning_prompt = function (message, time) {
+            prompt(message, 'alert-warning', time);
+        };
+
+        // 信息提示
+        var info_prompt = function (message, time) {
+            prompt(message, 'alert-info', time);
+        };
+
+        fail_prompt('请完善收货信息',1500);
+    </script>
+</body>
+
+</html>
