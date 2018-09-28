@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .update-avatar {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 30px;
+            height: 100px;
+            margin-bottom: 30px;
+        }
+
+        .avatar-btn {
+            display: inline-block;
+            position: relative;
+            vertical-align: top;
+            cursor: pointer;
+            width: 100px;
+            height: 20px;
+        }
+
+        .avatar-btn input {
+            display: none;
+        }
+
+        .avatar-btn span {
+            line-height: 100px;
+        }
+
+        .avatar {
+            border-radius: 100%;
+            height: 100px;
+            width: 100px;
+            margin-right: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="update-avatar">
+        <img class="avatar" src="./images/5.jpg" alt="">
+        <div class="avatar-btn">
+            <span id="pic">修改头像</span>
+            <input id="upload" name="file" accept="image/*" type="file">
+        </div>
+    </div>
+    <script src="./jquery-3.3.1.js"></script>
+    <script>
+        $("#pic").click(function () {
+            $("#upload").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+            $("#upload").on("change", function () {
+                var objUrl = getObjectURL(this.files[0]); //获取图片的路径，该路径不是图片在本地的路径
+                if (objUrl) {
+                    $(".avatar").attr("src", objUrl); //将图片路径存入src中，显示出图片
+                    upimg();
+                }
+            });
+        });
+        //建立一?可存取到?file的url
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+        //上传头像到服务器
+        function upimg() {
+            console.log(344)
+            var pic = $('#upload')[0].files[0];
+            var file = new FormData();
+            file.append('image', pic);
+            $.ajax({
+                url: "/uploadImg",
+                type: "post",
+                data: file,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    console.log(data);
+                    var res = data;
+                    $("#resimg").append("<img src='/" + res + "'>")
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
