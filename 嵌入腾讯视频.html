@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script src="./jquery-3.3.1.js"></script> -->
+    <script>
+            let startTime = new Date(),
+                duration = 0;
+            document.addEventListener(
+                "visibilitychange",
+                function () {
+                    if (document.visibilityState == "hidden") {
+                        let endTime = new Date();
+                        duration = endTime.getTime() - startTime.getTime();
+    
+                    } else {
+                        startTime = new Date();
+                    }
+                },
+                false
+            );
+            window.onbeforeunload = function (e) {
+                // let endTime = new Date();
+                // t = endTime.getTime() - startTime.getTime() + duration;
+                // let hour = Math.floor((t / 1000 / 60 / 60) % 24);
+                // let min = Math.floor((t / 1000 / 60) % 60);
+                // let sec = Math.floor((t / 1000) % 60);
+                // studytime = hour + "小时" + min + "分钟" + sec + "秒";
+                // let studydate = format(startTime, "yyyy-MM-dd HH:mm:ss");
+                // console.log(studytime,studydate);
+                return '确认离开网页？';
+            };
+        </script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- q00273zq6vy -->
+    <iframe id="my-videos" frameborder="0" width="960px" height="400px" src="https://v.qq.com/txp/iframe/player.html?vid=q00273zq6vy" allowFullScreen="true"></iframe>
+
+</body>
+
+</html>
