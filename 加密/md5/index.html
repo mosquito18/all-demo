@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8" >
+        <title>md5加密</title>
+        <script type="text/javascript" src="md5.min.js"></script>
+        <script type="text/javascript">
+            var md5encode = md5("mosquito~");         
+            console.log("md5 encode:" + md5encode);     
+            var objencode = md5("name", "mosquito");       
+            console.log("md5 encode:" + objencode);
+            const salt = 'This_is_salt'
+            var saltencode= md5('mosquito'+salt);//一般md5需要加盐处理
+            console.log("md5 salt encode:" + saltencode); 
+        </script>  
+    </head>
+    <body>
+    
+    </body>
+</html>
