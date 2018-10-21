@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            overflow: hidden;
+            position: relative;
+        }
+
+        #all {
+            position: absolute;
+            top: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body style="height:5000px;" id="body">
+    <div id="all">
+        <p style="background:greenyellow;">1</p>
+        <p style="background:red;" id="red">2</p>
+        <p style="background:yellow;">3</p>
+    </div>
+    <script>
+        window.onload = function () {
+            var aP = document.getElementsByTagName("p");
+            var oAll = document.getElementById("all");
+            var re1 = /firefox/i;
+            //开关
+            var onOff = true;
+            //向下滚动的距离量
+            var num = 1;
+            //向上滚动的距离量
+            //        var num2=0;
+            //循环页面上的p添加p的高度宽度
+            window.onresize = function () {
+                for (var i = 0; i < aP.length; i++) {
+                    aP[i].style.height = document.documentElement.clientHeight + "px";
+                    aP[i].style.width = document.documentElement.clientWidth + "px";
+                }
+            }
+            for (var i = 0; i < aP.length; i++) {
+                aP[i].style.height = document.documentElement.clientHeight + "px";
+                aP[i].style.width = document.documentElement.clientWidth + "px";
+            }
+
+            if (re1.test(window.navigator.userAgent)) {
+                window.addEventListener("DOMMouseScroll", rua, false);
+                function rua(ev) {
+                    var oEvent = ev || window.event; console.log(oEvent.detail);
+                    if (oEvent.detail > 0) {
+                        if (oAll.style.top == -document.documentElement.clientHeight * 2 + "px") {
+                            oAll.style.top = -document.documentElement.clientHeight * 2 + "px";
+                        } else {
+                            if (onOff == true) {
+                                onOff = false;
+                                oAll.style.top = -document.documentElement.clientHeight * num + "px";
+                                oAll.style.transition = "3s";
+                                num++;
+                                //                            num2++;
+                                setTimeout(function () {
+                                    onOff = true;
+                                }, 3000);
+                            }
+                        }
+                    }
+                    if (oEvent.detail < 0) {
+                        if (parseInt(oAll.style.top) >= 0) {
+                            oAll.style.top = 0;
+                        } else {
+                            if (onOff == true) {
+                                onOff = false;
+                                oAll.style.top = -document.documentElement.clientHeight * (num - 2) + "px";
+                                oAll.style.transition = "3s";
+                                //                            num2--;
+                                num--;
+                                setTimeout(function () {
+                                    onOff = true
+                                }, 3000)
+                            }
+                        }
+                    }
+                }
+            }
+
+            else {
+                //onmousewheel  是chrome上的兼容
+                window.onmousewheel = function (ev) {
+                    var oEvent = ev || window.event;
+                    //当oEvent.wheelDelta小于0的时候就是向下滚动
+                    if (oEvent.wheelDelta < 0) {
+                        //当总高度的top和实际高度*2的时候，让他一直等于这个高度
+                        if (oAll.style.top == -document.documentElement.clientHeight * 2 + "px") {
+                            oAll.style.top = -document.documentElement.clientHeight * 2 + "px";
+                        } else {
+                            //当开关为true的时候执行内部代码
+                            if (onOff == true) {
+                                //关闭开关
+                                onOff = false;
+                                //当前的top值和屏幕高度倍数一样
+                                oAll.style.top = -document.documentElement.clientHeight * num + "px";
+                                //过度事件为3s
+                                oAll.style.transition = "3s";
+                                //这两个在向下的时候自加
+                                num++;
+                                //                             num2++;
+                                //三秒后让开关为真
+                                setTimeout(function () {
+                                    onOff = true;
+                                }, 3000);
+                            }
+                        }
+                    }
+                    if (oEvent.wheelDelta > 0) {
+                        //往上的时候如果oAll.style.top为0了就让他等于0
+                        if (parseInt(oAll.style.top) >= 0) {
+                            oAll.style.top = 0;
+                        } else {
+                            //同上
+                            if (onOff == true) {
+                                onOff = false;
+                                oAll.style.top = -document.documentElement.clientHeight * (num - 2) + "px";
+                                oAll.style.transition = "3s";
+                                //                            num2--;
+                                num--;
+                                setTimeout(function () {
+                                    onOff = true
+                                }, 3000)
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
