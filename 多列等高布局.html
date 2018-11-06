@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>高度自适应布局</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            color: #f00;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 600px;
+            border: 3px solid #00C;
+            overflow: hidden;
+            /*这个超出隐藏的声明在IE6里不写也是可以的*/
+        }
+
+        .left {
+            float: left;
+            width: 150px;
+            background: #B0B0B0;
+            padding-bottom: 2000px;
+            margin-bottom: -2000px;
+        }
+
+        .right {
+            float: left;
+            width: 450px;
+            background: #6CC;
+            padding-bottom: 2000px;
+            margin-bottom: -2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">我是left</div>
+        <div class="right">我是right
+            <br>
+            <br>
+            <br>现在我的高度比left高，但left用它的padding-bottom补偿了这部分高度</div>
+        <div style="clear:both"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        .div1 {
+            background: #000080;
+            border: 1px solid red;
+        }
+
+        .div2 {
+            background: #800080;
+            border: 1px solid red;
+            height: 100px;
+            margin-top: 10px
+        }
+
+        .left {
+            float: left;
+            width: 20%;
+            height: 200px;
+            background: #DDD
+        }
+
+        .right {
+            float: right;
+            width: 30%;
+            height: 80px;
+            background: #DDD
+        }
+
+        /*清除浮动代码*/
+
+        .clearfloat:after {
+            display: block;
+            clear: both;
+            content: "";
+            visibility: hidden;
+            height: 0
+        }
+
+        .clearfloat {
+            zoom: 1
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- 原理：IE8以上和非IE浏览器才支持:after，原理和方法2有点类似，zoom(IE转有属性)可解决ie6,ie7浮动问题
+        优点：浏览器支持好，不容易出现怪问题（目前：大型网站都有使用，如：腾迅，网易，新浪等等）
+        缺点：代码多，不少初学者不理解原理，要两句代码结合使用，才能让主流浏览器都支持
+        建议：推荐使用，建议定义公共类，以减少CSS代码
+        评分：★★★★☆ -->
+    <div class="div1 clearfloat">
+        <div class="left">Left</div>
+        <div class="right">Right</div>
+    </div>
+    <div class="div2">
+        div2
+    </div>
+</body>
+
+</html>

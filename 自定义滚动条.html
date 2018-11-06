@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum=1.0,user-scalable=no">
+    <title></title>
+    <style type="text/css">
+        .inner {
+            width: 265px;
+            height: 400px;
+            position: absolute;
+            top: 33px;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            border: 1px solid #ddd;
+            padding-left: 10px;
+        }
+         
+        .innerbox {
+            overflow-x: hidden;
+            overflow-y: auto;
+            color: #000;
+            font-size: .7rem;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, "黑体", Arial, Tahoma;
+            height: 100%;
+        }
+        /* 定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸      */
+        .innerbox::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+            background-color: #F5F5F5;
+        }
+        /*定义滚动条轨道 内阴影+圆角*/    
+        .innerbox::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #9F88FF;
+        }
+        /*定义滑块 内阴影+圆角*/   
+        .innerbox::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #CC00FF;
+        } 
+    </style>
+ 
+</head>
+ 
+<body>
+    <div class="inner">
+        <div class="innerbox">
+            <p style="height:200px;">这是内容111</p>
+            <p style="height:400px;">这里是内容222</p>
+            <p>这里是内容333</p>
+        </div>
+    </div>
+</body>
+ 
+</html>

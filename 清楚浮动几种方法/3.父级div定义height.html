@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        .div1 {
+            background: #000080;
+            border: 1px solid red;
+            /*解决代码*/
+            height: 200px;
+        }
+
+        .div2 {
+            background: #800080;
+            border: 1px solid red;
+            height: 100px;
+            margin-top: 10px
+        }
+
+        .left {
+            float: left;
+            width: 20%;
+            height: 200px;
+            background: #DDD
+        }
+
+        .right {
+            float: right;
+            width: 30%;
+            height: 80px;
+            background: #DDD
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- 原理：父级div手动定义height，就解决了父级div无法自动获取到高度的问题
+优点：简单，代码少，容易掌握
+缺点：只适合高度固定的布局，要给出精确的高度，如果高度和父级div不一样时，会产生问题
+建议：不推荐使用，只建议高度固定的布局时使用
+评分：★★☆☆☆ -->
+    <div class="div1">
+        <div class="left">Left</div>
+        <div class="right">Right</div>
+    </div>
+    <div class="div2">
+        div2
+    </div>
+</body>
+
+</html>

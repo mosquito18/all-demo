@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>宽高比例固定</title>
+    <style>
+        .father {
+            overflow: hidden;
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #0c8ac5;
+        }
+
+        .son {
+            width: 100%;
+            padding-top: 50%;
+            background-color: #c03035;
+
+        }
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: #D8D8D8;
+        }
+
+        img {
+            float: left;
+            margin-right: 10px;
+            border: 2px solid #fdf6e3;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="father">
+        <div class="son">
+            <span>
+                <img src="https://p2.ssl.cdn.btime.com/t0167d9ebac0d0e1828.jpg" alt="" width="200px"> 王也, 武当派弟子（现已离开武当），八奇技之一风后奇门的继承人，靠占卜悟出天道，却又作出甘于投身乱世的选择。外表一副老好人的温良相，谦谦有礼如温吞水般，做事也经常是一副没精打采，貌似没睡醒的样子。优哉游哉还脾气软，代表举动经常是歉意笑着作出让步。似乎对什么都无所谓，一副悠然道人之姿，但是在涉及到家人安危时毫不含糊，甚至为此做出过有失冷静的举动。不小心爆粗都会拜祖道歉的出家人，实力在后生一辈中甚至称得上头筹，暂时只有一次完全没预料到地阴沟里翻船。
+            </span>
+        </div>
+    </section>
+    <script>
+        function quickSort2(arr, begin, end) {
+            if (begin >= end) {
+                return;
+            }
+            //选组长
+            var leader = arr[begin];
+            var left = begin;
+            var right = end;
+
+            while (left < right) {
+                //首先右边和leader比，因为leader的位置空出来了
+                while (left < right) {
+                    if (arr[right] < leader) {
+                        arr[left] = arr[right];
+                        left += 1;
+                        break;
+                    } else {
+                        right -= 1;
+                    }
+                }
+                while (left < right) {
+                    if (arr[left] > leader) {
+                        arr[right] = arr[left];
+                        right -= 1;
+                        break;
+                    } else {
+                        left += 1;
+                    }
+                }
+            }
+            arr[left] = leader;
+            quickSort2(arr, begin, left - 1);
+            quickSort2(arr, left + 1, end);
+        }
+        quickSort2(arr, 0, arr.length - 1);
+    </script>
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>border渐变</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .content {
+            box-sizing: border-box;
+            width: 100%;
+            padding-left: 200px;
+            padding-right: 200px;
+        }
+
+        .main {
+            background: #f66;
+            width: 100%;
+            float: left;
+            height: 100px;
+        }
+
+        .left {
+            background: #fcc;
+            width: 200px;
+            float: left;
+            margin-left: -100%;
+            position: relative;
+            left: -200px;
+            height: 50px;
+        }
+
+        .right {
+            position: relative;
+            right: -200px;
+            background: #fcc;
+            width: 200px;
+            float: left;
+            margin-left: -200px;
+            height: 60px;
+        }
+
+
+
+        .box {
+            width: 50%;
+            padding-top: 50%;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="main">
+            中间自适应区域
+        </div>
+        <div class="left">
+            <p>I'am left</p>
+        </div>
+        <div class="right">
+            <p>I'am right</p>
+        </div>
+    </div>
+    <div class="box"></div>
+    <script>
+        var versions = ['1.45.0', '1.5', '6', '3.3.3.3.3.3.3'];
+        var arr = [];
+        for (let i = 0; i < versions.length - 1; i++) {
+            for (let j = 0; j < versions.length - i - 1; j++) {
+                let v1 = versions[j].split('.');
+                let v2 = versions[j + 1].split('.');
+                let len = v1.length > v2.length ? v1.length : v2.length;
+                for (let k = 0; k < len; k++) {
+                    if (parseInt(v1[k]) < parseInt(v2[k])) {
+                        break;
+                    }
+                    if (parseInt(v1[k]) > parseInt(v2[k])) {
+                        let temp = versions[j];
+                        versions[j] = versions[j + 1];
+                        versions[j + 1] = temp;
+                        break;
+                    }
+                }
+            }
+        }
+        console.log(versions)
+    </script>
+</body>
+
+</html> -->
